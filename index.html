@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impulse — Профессиональное фитнес оборудование</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --red:#E31E24;
+  --red-dark:#B71419;
+  --red-light:#FF4444;
+  --bg:#FFFFFF;
+  --surface:#F8F8F8;
+  --text:#111111;
+  --muted:#666666;
+  --border:#E0E0E0;
+  --border-focus:rgba(227,30,36,0.5);
+  --shadow:0 2px 16px rgba(0,0,0,0.08);
+}
+html,body{min-height:100%}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Montserrat',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  display:flex;flex-direction:column;align-items:center;
+  min-height:100dvh;
+}
+
+/* Header */
+header{
+  width:100%;background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:16px 24px;
+  display:flex;align-items:center;gap:12px;
+  position:sticky;top:0;z-index:10;
+}
+.logo-icon{
+  width:40px;height:40px;border-radius:8px;
+  background:var(--red);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.logo-text-wrap{display:flex;flex-direction:column;line-height:1.1}
+.logo-brand{font-size:16px;font-weight:900;letter-spacing:.06em;color:var(--text)}
+.logo-sub{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+
+/* Hero */
+.hero{
+  width:100%;max-width:560px;
+  padding:40px 24px 0;
+  text-align:center;
+}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#FFF0F0;border:1px solid rgba(227,30,36,0.25);
+  border-radius:100px;padding:6px 16px;
+  font-size:11px;font-weight:700;color:var(--red);
+  letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:20px;
+  animation:fadeUp .5s .1s both;
+}
+.badge-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--red);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(227,30,36,0.6)}70%{box-shadow:0 0 0 6px rgba(227,30,36,0)}100%{box-shadow:0 0 0 0 rgba(227,30,36,0)}}
+
+h1{
+  font-size:clamp(28px,5vw,40px);
+  font-weight:900;
+  letter-spacing:-.03em;
+  line-height:1.1;
+  color:var(--text);
+  margin-bottom:14px;
+  animation:fadeUp .5s .2s both;
+}
+h1 span{color:var(--red)}
+.sub{
+  font-size:15px;color:var(--muted);line-height:1.7;
+  max-width:400px;margin:0 auto 32px;
+  animation:fadeUp .5s .3s both;
+}
+
+/* Trust badges */
+.trust{
+  display:flex;justify-content:center;gap:24px;
+  margin-bottom:36px;
+  flex-wrap:wrap;
+  animation:fadeUp .5s .35s both;
+}
+.trust-item{
+  display:flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:600;color:var(--muted);
+}
+.trust-item svg{flex-shrink:0}
+
+/* Card */
+.card{
+  width:100%;max-width:560px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:32px 28px;
+  margin:0 24px 48px;
+  box-shadow:var(--shadow);
+  animation:fadeUp .6s .4s both;
+}
+.card-title{
+  font-size:18px;font-weight:700;color:var(--text);
+  margin-bottom:6px;
+}
+.card-sub{
+  font-size:13px;color:var(--muted);line-height:1.5;
+  margin-bottom:24px;
+}
+
+/* Form */
+.fields{display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px;position:relative}
+label{
+  font-size:12px;font-weight:700;
+  color:var(--text);letter-spacing:.04em;
+  text-transform:uppercase;
+}
+label .req{color:var(--red);margin-left:2px}
+
+input,select{
+  height:52px;
+  background:#fff;
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  padding:0 16px;
+  color:var(--text);
+  font-family:'Montserrat',sans-serif;
+  font-size:15px;font-weight:500;
+  outline:none;
+  transition:border-color .18s,box-shadow .18s,background .18s;
+  -webkit-appearance:none;
+  appearance:none;
+  touch-action:manipulation;
+  cursor:pointer;
+}
+select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  padding-right:42px;
+}
+input::placeholder{color:#AAAAAA;font-weight:400}
+input:focus,select:focus{
+  border-color:var(--red);
+  box-shadow:0 0 0 3px rgba(227,30,36,0.1);
+}
+.field.err input,.field.err select{
+  border-color:#E31E24;
+  background:#FFF8F8;
+}
+.err-msg{
+  display:none;font-size:11px;font-weight:600;
+  color:var(--red);margin-top:2px;
+}
+.field.err .err-msg{display:block}
+
+/* Type selector */
+.type-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+}
+.type-btn{
+  border:1.5px solid var(--border);border-radius:10px;
+  padding:12px 10px;cursor:pointer;
+  background:#fff;text-align:center;
+  transition:border-color .15s,background .15s,color .15s;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  min-height:72px;justify-content:center;
+}
+.type-btn svg{opacity:.5;transition:opacity .15s}
+.type-btn .type-label{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.02em;line-height:1.3;transition:color .15s}
+.type-btn:hover{border-color:rgba(227,30,36,0.4);background:#FFF8F8}
+.type-btn.active{border-color:var(--red);background:#FFF0F0}
+.type-btn.active svg{opacity:1}
+.type-btn.active .type-label{color:var(--red)}
+.field.err .type-grid .type-btn{border-color:rgba(227,30,36,0.3)}
+
+/* Submit */
+.btn{
+  margin-top:8px;width:100%;
+  height:56px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--red),var(--red-light));
+  border-radius:12px;color:#fff;
+  font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;
+  letter-spacing:.02em;
+  position:relative;overflow:hidden;
+  transition:transform .15s,box-shadow .15s;
+  box-shadow:0 4px 20px rgba(227,30,36,0.35);
+  touch-action:manipulation;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(227,30,36,0.45)}
+.btn:active{transform:translateY(0);box-shadow:0 2px 12px rgba(227,30,36,0.3)}
+.btn::after{
+  content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
+  transition:left .5s;
+}
+.btn:hover::after{left:150%}
+.spinner{display:none;width:20px;height:20px;border:2.5px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;margin:0 auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+.btn.loading .btn-text{display:none}
+.btn.loading .spinner{display:block}
+
+.legal{
+  font-size:11px;color:#AAAAAA;text-align:center;
+  margin-top:12px;line-height:1.6;
+}
+
+/* Success */
+#success-block{
+  display:none;flex-direction:column;
+  align-items:center;gap:16px;text-align:center;padding:16px 0;
+}
+.ok-circle{
+  width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,var(--red),var(--red-light));
+  box-shadow:0 0 40px rgba(227,30,36,0.4);
+  display:flex;align-items:center;justify-content:center;
+  animation:popIn .5s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes popIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.ok-title{font-size:20px;font-weight:800;color:var(--text)}
+.ok-sub{font-size:14px;color:var(--muted);line-height:1.6;max-width:300px}
+.ok-steps{
+  width:100%;background:var(--surface);border-radius:12px;padding:20px;
+  display:flex;flex-direction:column;gap:12px;text-align:left;
+}
+.ok-step{display:flex;align-items:center;gap:12px}
+.ok-step-num{
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  background:#FFF0F0;border:1.5px solid rgba(227,30,36,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:var(--red);
+}
+.ok-step-text{font-size:13px;color:var(--muted);line-height:1.4}
+.ok-step-text strong{color:var(--text);font-weight:600}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important}}
+
+@media(max-width:480px){
+  .card{padding:24px 16px;margin:0 16px 40px}
+  .hero{padding:28px 16px 0}
+  .trust{gap:14px}
+  .type-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-icon">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <rect x="3" y="8" width="3" height="8" rx="1.5" fill="white"/>
+      <rect x="18" y="8" width="3" height="8" rx="1.5" fill="white"/>
+      <rect x="6" y="10" width="12" height="4" rx="2" fill="white"/>
+    </svg>
+  </div>
+  <div class="logo-text-wrap">
+    <span class="logo-brand">IMPULSE</span>
+    <span class="logo-sub">by Fitex Uzbekistan</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="badge">
+    <span class="badge-dot"></span>
+    Профессиональное оборудование · B2B
+  </div>
+
+  <h1>Оснастите ваш объект<br><span>оборудованием Impulse</span></h1>
+
+  <p class="sub">Беговые дорожки, силовые тренажёры и кардио-зоны для фитнес-залов, отелей и корпоративных объектов.</p>
+
+  <div class="trust">
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Гарантия 24/7
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Ответ за 30 минут
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      8700+ клиентов
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div id="form-wrap">
+    <div class="card-title">Оставить заявку</div>
+    <div class="card-sub">Заполните форму — менеджер свяжется с вами и подберёт оптимальное решение</div>
+
+    <div class="fields">
+
+      <!-- Тип объекта -->
+      <div class="field" id="f-type">
+        <label>Тип объекта <span class="req">*</span></label>
+        <div class="type-grid" id="typeGrid">
+          <button type="button" class="type-btn" data-value="Частное лицо">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="type-label">Частное лицо</span>
+          </button>
+          <button type="button" class="type-btn" data-value="Фитнес-зал">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="1.8"><rect x="3" y="8" width="3" height="8" rx="1.5"/><rect x="18" y="8" width="3" height="8" rx="1.5"/><rect x="6" y="10" width="12" height="4" rx="2"/></svg>
+            <span class="type-label">Фитнес-зал</span>
+          </button>
+          <button type="button" class="type-btn" data-value="Отель / SPA">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="type-label">Отель / SPA</span>
+          </button>
+          <button type="button" class="type-btn" data-value="Корпоративный">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+            <span class="type-label">Корпоративный</span>
+          </button>
+        </div>
+        <input type="hidden" id="inp-type">
+        <span class="err-msg">Выберите тип объекта</span>
+      </div>
+
+      <!-- Площадь -->
+      <div class="field" id="f-area">
+        <label for="inp-area">Площадь помещения <span class="req">*</span></label>
+        <select id="inp-area">
+          <option value="">Выберите площадь</option>
+          <option value="До 100 м²">До 100 м²</option>
+          <option value="100–300 м²">100–300 м²</option>
+          <option value="300–600 м²">300–600 м²</option>
+          <option value="600–1000 м²">600–1000 м²</option>
+          <option value="Более 1000 м²">Более 1000 м²</option>
+          <option value="Ещё не определились">Ещё не определились</option>
+        </select>
+        <span class="err-msg">Выберите площадь помещения</span>
+      </div>
+
+      <!-- Имя -->
+      <div class="field" id="f-name">
+        <label for="inp-name">Ваше имя <span class="req">*</span></label>
+        <input type="text" id="inp-name" placeholder="Иван Иванов" autocomplete="name">
+        <span class="err-msg">Введите ваше имя</span>
+      </div>
+
+      <!-- Телефон -->
+      <div class="field" id="f-phone">
+        <label for="inp-phone">Номер телефона <span class="req">*</span></label>
+        <input type="tel" id="inp-phone" placeholder="+998 90 123 45 67" autocomplete="tel">
+        <span class="err-msg">Введите корректный номер телефона</span>
+      </div>
+    </div>
+
+    <button type="button" class="btn" id="submitBtn">
+      <span class="btn-text">Оставить заявку →</span>
+      <span class="spinner"></span>
+    </button>
+    <p class="legal">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+  </div>
+
+  <div id="success-block">
+    <div class="ok-circle">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <path d="M7 18l8 8L29 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="ok-title">Заявка принята!</div>
+    <div class="ok-sub">Наш менеджер свяжется с вами в ближайшее время и подберёт оптимальное решение для вашего объекта.</div>
+    <div class="ok-steps">
+      <div class="ok-step">
+        <div class="ok-step-num">1</div>
+        <div class="ok-step-text"><strong>В течение 30 минут</strong> — менеджер перезвонит вам</div>
+      </div>
+      <div class="ok-step">
+        <div class="ok-step-num">2</div>
+        <div class="ok-step-text"><strong>Подбор оборудования</strong> — под площадь и задачи вашего объекта</div>
+      </div>
+      <div class="ok-step">
+        <div class="ok-step-num">3</div>
+        <div class="ok-step-text"><strong>Коммерческое предложение</strong> — цены, сроки и условия поставки</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzdDjAyqSsGwCHY1VunSF5tIIhc4tf77Sbz07ve3xJ-nu2O5rxbkut0Wj6wsv4h-eMK/exec';
+
+// Type selector
+let selectedType = '';
+document.querySelectorAll('.type-btn').forEach(btn => {
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+    selectedType = this.dataset.value;
+    document.getElementById('inp-type').value = selectedType;
+    document.getElementById('f-type').classList.remove('err');
+  });
+});
+
+// Phone mask
+const phoneEl = document.getElementById('inp-phone');
+const PREFIX = '+998 ';
+phoneEl.addEventListener('focus', function(){ if(!this.value) this.value = PREFIX; });
+phoneEl.addEventListener('blur', function(){ if(this.value === PREFIX || this.value === '+998') this.value = ''; });
+phoneEl.addEventListener('keydown', function(e){
+  if(this.selectionStart <= PREFIX.length && this.selectionEnd <= PREFIX.length && (e.key==='Backspace'||e.key==='Delete')){ e.preventDefault(); return; }
+  if(this.selectionStart < PREFIX.length) this.setSelectionRange(PREFIX.length, PREFIX.length);
+});
+phoneEl.addEventListener('input', function(){
+  if(!this.value.startsWith(PREFIX)) this.value = PREFIX + this.value.replace(/^\+998\s?/,'');
+  const digits = this.value.slice(PREFIX.length).replace(/\D/g,'').slice(0,9);
+  this.value = PREFIX + digits;
+});
+
+// Validation
+function check(fieldId, value, validator){
+  const ok = validator(value);
+  document.getElementById(fieldId).classList.toggle('err', !ok);
+  return ok;
+}
+
+document.getElementById('inp-name').addEventListener('blur', function(){
+  check('f-name', this.value, v => v.trim().length > 1);
+});
+document.getElementById('inp-phone').addEventListener('blur', function(){
+  check('f-phone', this.value, v => v.replace(/\D/g,'').length >= 11);
+});
+document.getElementById('inp-area').addEventListener('change', function(){
+  check('f-area', this.value, v => v !== '');
+});
+
+// Submit
+document.getElementById('submitBtn').addEventListener('click', async function(){
+  const okType  = check('f-type',  selectedType, v => v !== '');
+  const okArea  = check('f-area',  document.getElementById('inp-area').value, v => v !== '');
+  const okName  = check('f-name',  document.getElementById('inp-name').value, v => v.trim().length > 1);
+  const okPhone = check('f-phone', document.getElementById('inp-phone').value, v => v.replace(/\D/g,'').length >= 11);
+
+  if(!okType || !okArea || !okName || !okPhone){
+    document.querySelector('.field.err input, .field.err select')?.focus();
+    return;
+  }
+
+  this.classList.add('loading');
+  this.disabled = true;
+
+  const params = new URLSearchParams({
+    source: 'impulse-lead',
+    name:    document.getElementById('inp-name').value,
+    phone:   document.getElementById('inp-phone').value.replace('+',''),
+    company: selectedType,
+    niche:   document.getElementById('inp-area').value
+  });
+
+  try {
+    await fetch(SHEETS_URL + '?' + params.toString(), { method:'GET', mode:'no-cors' });
+  } catch(e) {}
+
+  document.getElementById('form-wrap').style.display = 'none';
+  document.getElementById('success-block').style.display = 'flex';
+});
+</script>
+</body>
+</html>
